@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Size</th>
+    <th>Colour</th>
+    <th>Material</th>
+  </tr>
+  </thead>
+
+    {%  for p in  products %}
+  <tr>
+    <td>{{ p.name }}</td>
+    <td>{{ p.price }}</td>
+    <td>{{ p.size }}</td>
+    <td>{{ p.colour }}</td>
+    <td>{{ p.material }}</td>
+  </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
