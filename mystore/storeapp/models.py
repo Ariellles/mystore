@@ -1,13 +1,21 @@
 from django.db import models
 
+
+SIZE_OPTIONS = [
+    ('Small', 'Small'),
+    ('Medium', 'Medium'),
+    ('Large', 'Large'),
+]
+
+
 class Product(models.Model):
     name = models.CharField(max_length=20)
-    price = models.IntegerField()
-    size = models.CharField(max_length=20) #Small or Normal
+    price = models.FloatField()
+    size = models.CharField(max_length=20, choices=SIZE_OPTIONS)
     colour = models.CharField(max_length=20)
     material = models.CharField(max_length=20)
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
