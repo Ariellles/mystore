@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from storeapp.views import ProductsListView
 from storeapp.views import ContactUs
 from storeapp.views import HomePage
 from storeapp.views import CreateProduct
 from storeapp.views import EditProduct
 from storeapp.views import DeleteProduct
+from storeapp.views import ProductDetail
+from storeapp.views import SuccessfulEdit
 
 
 urlpatterns = [
@@ -31,5 +35,13 @@ urlpatterns = [
     path('create', CreateProduct.as_view(), name= 'create'),
     path('products/<int:pk>/edit', EditProduct.as_view(), name='edit'),
     path('products/<int:pk>/delete', DeleteProduct.as_view(), name='delete_product'),
+    path('products/<int:pk>', ProductDetail.as_view(), name='product_detail'),
+    path('successful', SuccessfulEdit.as_view(), name= 'successful')
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

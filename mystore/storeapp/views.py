@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Product
 from .forms import ContactForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
 
 
@@ -21,6 +22,10 @@ class HomePage(TemplateView):
     template_name = 'homepage.html'
 
 
+class SuccessfulEdit(TemplateView):
+    template_name = 'successful_update.html'
+
+
 class CreateProduct(CreateView):
     template_name = 'create_product.html'
     model = Product
@@ -31,7 +36,7 @@ class CreateProduct(CreateView):
 class EditProduct(UpdateView):
     template_name = 'edit_product.html'
     model = Product
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('successful')
     context_object_name = 'product'
     fields = '__all__'
 
@@ -41,5 +46,11 @@ class DeleteProduct(DeleteView):
     model = Product
     context_object_name = 'product'
     success_url = reverse_lazy('homepage')
+
+
+class ProductDetail(DetailView):
+    template_name = 'product_detail.html'
+    model = Product
+    context_object_name = 'product'
 
 # Create your views here.

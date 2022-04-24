@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if product.image %}
+    <p> <img src="{{product.cover.url}}" width="300" height="auto"> </p>
+{% else %}
+    <p> <img src="https://dummyimage.com/200x300/000/fff&text=NO+IMAGE" width="300" height="auto"> </p>
+{% endif %}
+
+
+<p><b>Name:</b> {{product.name}}</p>
+<p><b>Price:</b> {{product.price}}</p>
+
+
+<hr>
+
+    <p><a href="{% url 'edit' product.id %}">Update product</a></p>
+
+    <p><a href="{% url 'delete_product' product.id %}">Delete product</a></p>
+
+
+
+{% endblock %}
