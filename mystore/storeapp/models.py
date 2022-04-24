@@ -22,7 +22,7 @@ class Product(models.Model):
     colour = models.CharField(max_length=20, choices=COLOUR_OPTIONS)
     material = models.CharField(max_length=20)
     description = models.TextField()
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self):
         return self.name
