@@ -20,6 +20,7 @@ from storeapp.views import ContactUs
 from storeapp.views import HomePage
 from storeapp.views import CreateProduct
 from storeapp.views import EditProduct
+from storeapp.views import DeleteProduct
 
 
 urlpatterns = [
@@ -29,5 +30,6 @@ urlpatterns = [
     path('', HomePage.as_view(), name= 'homepage'),
     path('create', CreateProduct.as_view(), name= 'create'),
     path('products/<int:pk>/edit', EditProduct.as_view(), name='edit'),
+    path('products/<int:pk>/delete', DeleteProduct.as_view(), name='delete_product'),
 
 ]
