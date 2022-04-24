@@ -26,11 +26,19 @@ class SuccessfulEdit(TemplateView):
     template_name = 'successful_update.html'
 
 
+class SuccessfulAddition(TemplateView):
+    template_name = 'successful_addition.html'
+
+
+class SuccessfulDeletion(TemplateView):
+    template_name = 'successful_deletion.html'
+
+
 class CreateProduct(CreateView):
     template_name = 'create_product.html'
     model = Product
     fields = '__all__'
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('addition')
 
 
 class EditProduct(UpdateView):
@@ -45,7 +53,7 @@ class DeleteProduct(DeleteView):
     template_name = 'delete_product.html'
     model = Product
     context_object_name = 'product'
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('deletion')
 
 
 class ProductDetail(DetailView):

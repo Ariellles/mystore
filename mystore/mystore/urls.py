@@ -25,6 +25,8 @@ from storeapp.views import EditProduct
 from storeapp.views import DeleteProduct
 from storeapp.views import ProductDetail
 from storeapp.views import SuccessfulEdit
+from storeapp.views import SuccessfulAddition
+from storeapp.views import SuccessfulDeletion
 
 
 urlpatterns = [
@@ -32,11 +34,14 @@ urlpatterns = [
     path('shop', ProductsListView.as_view(), name='products'),
     path('contact', ContactUs.as_view(), name='contact'),
     path('', HomePage.as_view(), name= 'homepage'),
-    path('create', CreateProduct.as_view(), name= 'create'),
+    path('create', CreateProduct.as_view(), name='create'),
     path('products/<int:pk>/edit', EditProduct.as_view(), name='edit'),
     path('products/<int:pk>/delete', DeleteProduct.as_view(), name='delete_product'),
+    path('products/<int:pk>/add', DeleteProduct.as_view(), name='add_product'),
     path('products/<int:pk>', ProductDetail.as_view(), name='product_detail'),
-    path('successful', SuccessfulEdit.as_view(), name= 'successful')
+    path('successful', SuccessfulEdit.as_view(), name='successful'),
+    path('addition', SuccessfulAddition.as_view(), name='addition'),
+    path('deletion', SuccessfulDeletion.as_view(), name= 'deletion'),
 
 ]
 
