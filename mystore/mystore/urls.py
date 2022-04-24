@@ -18,11 +18,13 @@ from django.urls import path
 from storeapp.views import ProductsListView
 from storeapp.views import ContactUs
 from storeapp.views import HomePage
+from storeapp.views import CreateProduct
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('shop', ProductsListView.as_view(), name='products'),
     path('contact', ContactUs.as_view(), name='contact'),
     path('', HomePage.as_view(), name= 'homepage'),
+    path('create', CreateProduct.as_view(), name= 'create'),
 
 ]

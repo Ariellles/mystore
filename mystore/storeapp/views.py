@@ -17,4 +17,10 @@ class ContactUs(CreateView):
 class HomePage(TemplateView):
     template_name = 'homepage.html'
 
+
+class CreateProduct(CreateView):
+    template_name = 'create_product.html'
+    model = Product
+    fields = '__all__'
+
 # Create your views here.
