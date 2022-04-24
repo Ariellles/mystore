@@ -15,7 +15,10 @@ class ProductsListView(ListView):
 class ContactUs(FormView):
     template_name = 'contact.html'
     form_class = ContactForm
-    success_url = reverse_lazy('products')
+    success_url = reverse_lazy('scontact')
+
+class SuccessfulContact(TemplateView):
+    template_name = 'successful_contact.html'
 
 
 class HomePage(TemplateView):
