@@ -15,13 +15,50 @@
 
   </head>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container fixed {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.container fixed a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.container fixed a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.container fixed a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container fixed">
+        <img src="https://www.newbeauty.com/wp-content/uploads/2020/02/79678-swelljpg.jpg" width="70" height="50" >
         <a class="navbar-brand" href="{% url 'homepage'%}">AceBottle</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
           <span class="navbar-toggler-icon"></span>
         </button>
+
 
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
@@ -40,6 +77,10 @@
           </div>
         </div>
       </div>
+
+      <div class="topnav">
+  <input type="text" placeholder="Search..">
+</div>
 
       <div class="navbar-nav ml-auto">
             <div class="nav-item dropdown">
@@ -70,5 +111,6 @@
       </div>
     </div>
   </body>
+
 
 </html>
