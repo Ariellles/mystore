@@ -2,27 +2,29 @@
 
 {% block content %}
 
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Size</th>
-    <th>Colour</th>
-    <th>Material</th>
-  </tr>
-  </thead>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
-    {%  for p in  products %}
-  <tr>
-     <td><a href="{% url 'product_detail' p.id %}"> {{ p.name }} </a></td>
-    <td>{{ p.price }}</td>
-    <td>{{ p.size }}</td>
-    <td>{{ p.colour }}</td>
-    <td>{{ p.material }}</td>
-  </tr>
-    {% endfor %}
+{% for product in products %}
 
-</table>
+  <div class="col mb-4">
+
+    <div class="card" style="width: 300;">
+
+      {% if product.cover %}
+        <img src="{{product.cover.url}}" width="300" height="450">
+      {% else %}
+        <img src="https://o.remove.bg/downloads/e35afa0b-11fc-49e0-8adc-2987d261b88d/photo-1602143407151-7111542de6e8-removebg-preview.png" width="300" height="450">
+      {% endif %}
+
+      <div class="card-body">
+        <center class="card-title"><a href="{% url 'product_detail' product.id%}"> {{product.name}} </a> </center>
+      </div>
+    </div>
+
+  </div>
+
+{% endfor %}
+
+</div>
 
 {% endblock %}
