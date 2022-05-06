@@ -17,6 +17,7 @@ class ContactUs(FormView):
     form_class = ContactForm
     success_url = reverse_lazy('scontact')
 
+
 class SuccessfulContact(TemplateView):
     template_name = 'successful_contact.html'
 
@@ -35,6 +36,10 @@ class SuccessfulAddition(TemplateView):
 
 class SuccessfulDeletion(TemplateView):
     template_name = 'successful_deletion.html'
+
+
+class Cart(TemplateView):
+    template_name = 'cart.html'
 
 
 class CreateProduct(CreateView):
