@@ -29,6 +29,7 @@ from storeapp.views import SuccessfulAddition
 from storeapp.views import SuccessfulDeletion
 from storeapp.views import SuccessfulContact
 from storeapp.views import Cart
+from storeapp.views import PurchaseView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,7 +45,8 @@ urlpatterns = [
     path('addition', SuccessfulAddition.as_view(), name='addition'),
     path('deletion', SuccessfulDeletion.as_view(), name='deletion'),
     path('scontact', SuccessfulContact.as_view(), name='scontact'),
-    path('Cart', Cart.as_view(), name='cart')
+    path('cart', Cart.as_view(), name='cart'),
+    path('products/<int:pk>/purchase', PurchaseView.as_view(), name='purchase'),
 
 ]
 

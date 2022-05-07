@@ -1,4 +1,5 @@
 from django import forms
+from .models import Purchase
 
 
 class ContactForm(forms.Form):
@@ -6,3 +7,12 @@ class ContactForm(forms.Form):
     email = forms.EmailField()
     birth_day = forms.DateField(widget=forms.SelectDateWidget, required=False, label='Date of Birth')
     message = forms.CharField(max_length=500, widget=forms.Textarea)
+
+
+class PurchaseForm(forms.ModelForm):
+    class Meta:
+        model = Purchase
+        fields = '__all__'
+        widgets = {
+            'product': forms.HiddenInput()
+        }

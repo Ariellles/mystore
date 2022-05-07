@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Product
-from .forms import ContactForm
+from .models import Product, Purchase
+from .forms import ContactForm, PurchaseForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
@@ -40,6 +40,29 @@ class SuccessfulDeletion(TemplateView):
 
 class Cart(TemplateView):
     template_name = 'cart.html'
+
+
+class PurchaseView(LoginRequiredMixin, FormView):
+    template_name = 'purchase.html'
+    success_url = reverse_lazy('products')
+    form_class = PurchaseForm
+
+    def get_context_data(self, **kwargs):
+        product = Product.objects.get(id=self.kwargs['pk'])
+        context = super(PurchaseView,self).get_context_data(**kwargs)
+        context['product'] = product
+        return context
+
+    def get_initial(self):
+        initial = super(PurchaseView, self).get_initial()
+        product = Product.objects.get(id=self.kwargs['pk'])
+
+        initial.update({'product': product.pk})
+        return initial
+
+    def form_valid(self, form):
+        form.save()
+        return super(PurchaseView, self).form_valid(form)
 
 
 class CreateProduct(CreateView):

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Finish your purchase:</h2>
+<h3>You are purchasing {{product}} </h3>
+
+<form method="post">
+    {{ form.as_p }}
+
+    {% csrf_token %}
+
+    <input type="submit", value="Buy Now" class="btn btn-primary">
+</form>
+
+{% endblock %}
