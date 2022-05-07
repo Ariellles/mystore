@@ -90,15 +90,16 @@ body {
                     {% else %}Hello, {{ user.username }}!{% endif %}
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item text-right" href="">Logout</a>
-                    <a class="dropdown-item text-right" href="">Change password</a>
+                    <a class="dropdown-item text-right" href="{% url 'logout' %}">Logout</a>
+                    <a class="dropdown-item text-right" href="{% url 'password_change' %}">Change password</a>
                   </div>
                 {% else %}
                   <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown">
                     You are not logged in.
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item text-right" href="">Login</a>
+                    <a class="dropdown-item text-right" href="{% url 'login' %}">Login</a>
+                    <a class="dropdown-item text-right" href="{% url 'register' %}">Register</a>
                   </div>
                 {% endif %}
             </div>

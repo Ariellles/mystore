@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Purchase
-from .forms import ContactForm, PurchaseForm
+from .forms import ContactForm, PurchaseForm, RegisterUserForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, FormView, UpdateView, DeleteView
@@ -91,5 +91,11 @@ class ProductDetail(DetailView):
     template_name = 'product_detail.html'
     model = Product
     context_object_name = 'product'
+
+
+class RegisterUser(CreateView):
+    template_name = 'register_user.html'
+    success_url = reverse_lazy('products')
+    form_class = RegisterUserForm
 
 # Create your views here.

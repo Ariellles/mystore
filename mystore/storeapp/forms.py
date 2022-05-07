@@ -1,5 +1,6 @@
 from django import forms
-from .models import Purchase
+from .models import Purchase, Profile
+from django.contrib.auth.forms import UserCreationForm
 
 
 class ContactForm(forms.Form):
@@ -16,3 +17,11 @@ class PurchaseForm(forms.ModelForm):
         widgets = {
             'product': forms.HiddenInput()
         }
+
+
+class RegisterUserForm(UserCreationForm):
+
+    def save(self):
+        new_user = super().save()
+        new_profile = Profile.objects.create(user=new_user)
+        return new_user
