@@ -42,9 +42,13 @@ class Cart(TemplateView):
     template_name = 'cart.html'
 
 
+class SuccessfulPurchase(TemplateView):
+    template_name = 'successful_purchase.html'
+
+
 class PurchaseView(LoginRequiredMixin, FormView):
     template_name = 'purchase.html'
-    success_url = reverse_lazy('products')
+    success_url = reverse_lazy('payment')
     form_class = PurchaseForm
 
     def get_context_data(self, **kwargs):
@@ -65,26 +69,29 @@ class PurchaseView(LoginRequiredMixin, FormView):
         return super(PurchaseView, self).form_valid(form)
 
 
-class CreateProduct(CreateView):
+class CreateProduct(PermissionRequiredMixin, CreateView):
     template_name = 'create_product.html'
     model = Product
     fields = '__all__'
     success_url = reverse_lazy('addition')
+    permission_required = 'viewer.create_product'
 
 
-class EditProduct(UpdateView):
+class EditProduct(PermissionRequiredMixin, UpdateView):
     template_name = 'edit_product.html'
     model = Product
     success_url = reverse_lazy('successful')
     context_object_name = 'product'
     fields = '__all__'
+    permission_required = 'viewer.edit_product'
 
 
-class DeleteProduct(DeleteView):
+class DeleteProduct(PermissionRequiredMixin, DeleteView):
     template_name = 'delete_product.html'
     model = Product
     context_object_name = 'product'
     success_url = reverse_lazy('deletion')
+    permission_required = 'viewer.delete_product'
 
 
 class ProductDetail(DetailView):

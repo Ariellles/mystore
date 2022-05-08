@@ -31,6 +31,7 @@ from storeapp.views import SuccessfulContact
 from storeapp.views import Cart
 from storeapp.views import PurchaseView
 from storeapp.views import RegisterUser
+from storeapp.views import SuccessfulPurchase
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,8 +50,8 @@ urlpatterns = [
     path('cart', Cart.as_view(), name='cart'),
     path('products/<int:pk>/purchase', PurchaseView.as_view(), name='purchase'),
     path('register', RegisterUser.as_view(), name='register'),
-    path('accounts/', include('django.contrib.auth.urls'))
-
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('payment', SuccessfulPurchase.as_view(), name='payment'),
 
 ]
 
